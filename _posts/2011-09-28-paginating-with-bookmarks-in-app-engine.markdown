@@ -21,7 +21,7 @@ We'd like to paginate with the sort order criteria "x ascending, y ascending". F
 
 
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2011/09/example-data.png)](http://www.johntantalo.com/blog/wp-content/uploads/2011/09/example-data.png)
+[![](/images/wp-content/uploads/2011/09/example-data.png)](/images/wp-content/uploads/2011/09/example-data.png)
 
 
 
@@ -53,7 +53,7 @@ What would that look like on our example index?
 
 
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2011/09/queries.gif)](http://www.johntantalo.com/blog/wp-content/uploads/2011/09/queries.gif)
+[![](/images/wp-content/uploads/2011/09/queries.gif)](/images/wp-content/uploads/2011/09/queries.gif)
 
 
 

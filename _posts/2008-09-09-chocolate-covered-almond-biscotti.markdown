@@ -14,4 +14,4 @@ tags:
 - desserts
 ---
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2008/09/img_0104.jpg)](http://www.johntantalo.com/blog/wp-content/uploads/2008/09/img_0104.jpg)
+[![](/images/wp-content/uploads/2008/09/img_0104.jpg)](/images/wp-content/uploads/2008/09/img_0104.jpg)

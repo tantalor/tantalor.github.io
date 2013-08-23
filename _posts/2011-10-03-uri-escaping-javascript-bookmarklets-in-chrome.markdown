@@ -14,7 +14,7 @@ tags:
 - JavaScript
 ---
 
-[John Gruber](http://daringfireball.net/) published a helpful [JavaScript Bookmarklet Builder](http://daringfireball.net/2007/03/javascript_bookmarklet_builder) which I used to generate my [IPA TTS bookmarklet](http://www.johntantalo.com/blog/ipa-tts-bookmarklet).
+[John Gruber](http://daringfireball.net/) published a helpful [JavaScript Bookmarklet Builder](http://daringfireball.net/2007/03/javascript_bookmarklet_builder) which I used to generate my [IPA TTS bookmarklet](/blog/ipa-tts-bookmarklet).
 
 
 

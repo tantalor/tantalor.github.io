@@ -13,7 +13,7 @@ tags:
 - water
 ---
 
-![water test](http://www.johntantalo.com/blog/wp-content/uploads/2009/06/img_0184-300x225.jpg)
+![water test](/images/wp-content/uploads/2009/06/img_0184-300x225.jpg)
 
 M and I performed a double-blind study of four kinds of water. Our preferences agreed, in order: purified water, filtered tap water, natural spring water, and unfiltered tap water.
 

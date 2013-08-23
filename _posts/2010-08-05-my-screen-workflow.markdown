@@ -11,7 +11,7 @@ tags:
 - ssh
 ---
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2010/08/screen.png)](http://www.johntantalo.com/blog/wp-content/uploads/2010/08/screen.png)I use [GNU Screen](http://www.gnu.org/software/screen/) to keep a few terminal windows open over a shared set of screen windows logged into a large number of other machines.
+[![](/images/wp-content/uploads/2010/08/screen.png)](/images/wp-content/uploads/2010/08/screen.png)I use [GNU Screen](http://www.gnu.org/software/screen/) to keep a few terminal windows open over a shared set of screen windows logged into a large number of other machines.
 
 
 

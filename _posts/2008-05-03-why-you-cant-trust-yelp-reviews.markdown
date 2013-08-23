@@ -21,6 +21,6 @@ So why do some places get terrible reviews? I see cases that would cause this. F
 
 In another case, a super-exclusive bar might only cater to a very narrow range of clientele. In other words, you have to be unusually close to this bar in the model in order to like it. Perhaps it only supports one or two cliques of regulars, and everyone else is shunned.
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2008/05/untitled-300x244.png)](http://www.johntantalo.com/blog/wp-content/uploads/2008/05/untitled.png)
+[![](/images/wp-content/uploads/2008/05/untitled-300x244.png)](/images/wp-content/uploads/2008/05/untitled.png)
 
 In this example, the radii correspond to the ability of a bar or restaurant to support a wide or narrow section of people.

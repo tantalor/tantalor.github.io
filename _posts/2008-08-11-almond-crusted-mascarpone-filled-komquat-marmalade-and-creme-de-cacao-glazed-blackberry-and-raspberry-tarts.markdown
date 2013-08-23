@@ -14,4 +14,4 @@ tags:
 - tarts
 ---
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2008/08/img_0049-300x225.jpg)](http://www.johntantalo.com/blog/wp-content/uploads/2008/08/img_0049.jpg)
+[![](/images/wp-content/uploads/2008/08/img_0049-300x225.jpg)](/images/wp-content/uploads/2008/08/img_0049.jpg)

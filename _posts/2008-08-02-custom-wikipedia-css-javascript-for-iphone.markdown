@@ -20,10 +20,10 @@ This afternoon I made a custom [stylesheet](http://en.wikipedia.org/wiki/User:Be
 
 
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2008/08/portrait.png)](http://www.johntantalo.com/blog/wp-content/uploads/2008/08/portrait.png)
+[![](/images/wp-content/uploads/2008/08/portrait.png)](/images/wp-content/uploads/2008/08/portrait.png)
 
 
 
 
 
-[![](http://www.johntantalo.com/blog/wp-content/uploads/2008/08/landscape.png)](http://www.johntantalo.com/blog/wp-content/uploads/2008/08/landscape.png)
+[![](/images/wp-content/uploads/2008/08/landscape.png)](/images/wp-content/uploads/2008/08/landscape.png)

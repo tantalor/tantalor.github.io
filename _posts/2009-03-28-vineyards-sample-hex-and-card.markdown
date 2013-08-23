@@ -13,4 +13,4 @@ tags:
 - vineyards
 ---
 
-![vineyards1](http://www.johntantalo.com/blog/wp-content/uploads/2009/03/example1.jpg)
+![vineyards1](/images/wp-content/uploads/2009/03/example1.jpg)
