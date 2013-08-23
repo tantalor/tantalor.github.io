@@ -1,0 +1,68 @@
+---
+author: John Tantalo
+date: 2012-07-29 04:02:50+00:00
+layout: post
+title: Axiom
+---
+
+I recently learned that python has a peculiar behavior when comparing tuples.
+
+``` python
+>>> () is ()
+True
+>>> ((),) is ((),)
+False
+````    
+
+The expression `((),)` is a 1-tuple holding an empty tuple. Python knows that the empty tuple is the same as itself but not the same for the nested case. This is probably an implementation detail, but my curiosity was sparked.
+
+In mathematical terms, it is as if we know 0 equals 0, but we not whether 1 equals 1. How odd!
+
+I decided to explore this world, but I soon discovered I need to know a few more things. In computer programming, it's customary to capture facts in terms of questions that we can answer.
+
+I decided my program must know how to answer these questions,
+
+  1. What is zero?
+  2. Is something zero?
+  3. What is something plus one?
+  4. What is something less one?
+
+This translates very easily into python code,
+
+``` python
+def zero():
+  """What is zero?"""
+  return ()
+
+def is_zero(arg):
+  """Is something zero?"""
+  return arg is zero()
+
+def next(arg):
+  """What is something plus one?"""
+  return (arg,)
+
+def prev(arg):
+  """What is something less one?"""
+  if is_zero(arg):
+    raise Exception("Nothing is before zero.")
+  return arg[0]
+```
+
+This might not seem very interesting, but these four functions (or "axioms") are extremely powerful. I have written programs that can add, subtract, multiply, compute primes, factorials, exponents, and more.
+
+For example, here's an addition function,
+    
+``` python
+def add(left, right):
+  "Returns left + right"
+  while True:
+    if is_zero(right):
+      return left
+    left = next(left)
+    right = prev(right)
+```
+
+Writing programs in this style has been an interesting diversion for me. This number system is called "natural numbers" by some, and it's usually a topic for school children, but I'm impressed by its simplicity and power. I hope to see what else can be accomplished, such as computing _n_th roots and working with negatives, fractions, and complex numbers.
+
+[See more of the axiom project on GitHub.](https://github.com/tantalor/axiom)

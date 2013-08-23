@@ -1,0 +1,5 @@
+name: Dodgeball Cannon
+markdown: redcarpet
+pygments: true
+author: John Tantalo Tantalo
+permalink: blog/:title

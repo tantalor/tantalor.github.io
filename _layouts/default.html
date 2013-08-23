@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ page.title }}</title>
+        <meta name="viewport" content="width=device-width">
+
+        <!-- syntax highlighting CSS -->
+        <link rel="stylesheet" href="/css/syntax.css">
+
+        <!-- Custom CSS -->
+        <link rel="stylesheet" href="/css/main.css">
+
+    </head>
+    <body>
+
+        <div class="container">
+          <div class="site">
+            <div class="header">
+              <h1 class="title"><a href="/"><span>{{ site.name }}</span></a></h1>
+            </div>
+
+                {{ content }}
+
+            <div class="footer">
+              <div class="contact">
+                <p>
+                  John Tantalo<br />
+                  <a href="http://github.com/tantalor">github.com/tantalor</a><br />
+                  <a href="mailto:john.tantalo@gmail.com">john.tantalo@gmail.com</a>
+                </p>
+              </div>
+            </div>
+          </div>
+        </div> <!-- /container -->
+
+    </body>
+</html>
