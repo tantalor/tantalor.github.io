@@ -23,10 +23,10 @@ Here are some quick examples to get you started.
 
 
 
-    
-        #!/usr/bin/env ringo
-        print("ringo");
-    
+{% highlight bash %}
+#!/usr/bin/env ringo
+print("ringo");
+{% endhighlight %}
 
 
 
@@ -36,8 +36,10 @@ Here are some quick examples to get you started.
 
 
     
-        #!/usr/bin/env narwhal
-        print("narwhal");
+{% highlight bash %}
+#!/usr/bin/env narwhal
+print("narwhal");
+{% endhighlight %}
     
 
 
@@ -48,8 +50,10 @@ Here are some quick examples to get you started.
 
 
     
-        #!/usr/bin/env node
-        require("sys").print("node\n");
+{% highlight bash %}
+#!/usr/bin/env node
+require("sys").print("node\n");
+{% endhighlight %}
     
 
 
@@ -60,8 +64,10 @@ Here are some quick examples to get you started.
 
 
     
-        #!/usr/bin/env jsc
-        print("jsc");
+{% highlight bash %}
+#!/usr/bin/env jsc
+print("jsc");
+{% endhighlight %}
     
 
 

@@ -43,11 +43,11 @@ A _channel_ is a mechanism for two concurrently executing functions to communica
 Goroutines are rather trivial to implement, a simple _setTimeout_ will schedule an independent thread of control.
 
 
-
->     function go (fn) {
->       setTimeout(fn, 0);
->     }; 
-
+{% highlight javascript %}
+function go (fn) {
+  setTimeout(fn, 0);
+}; 
+{% endhighlight %}
 
 
 
@@ -55,36 +55,36 @@ Goroutines are rather trivial to implement, a simple _setTimeout_ will schedule 
 Synchronous channels will require a queue of _reader_ and _writer_ callbacks. I decided to call the reader callbacks before the writers, but I don't think it matters.
 
 
+{% highlight javascript %}
+var chan = function () {
+  this.readers = []; // [cb, ...]
+  this.writers = []; // [[value, cb], ...]
+};
 
->     var chan = function () {
->       this.readers = []; // [cb, ...]
->       this.writers = []; // [[value, cb], ...]
->     };
->     
->     chan.prototype.read = function (cb) {
->       if (this.writers.length) {
->         // consume a writer
->         var writer = this.writers.shift();
->         cb(writer[0]);
->         writer[1](writer[0]);
->       } else {
->         // queue the reader
->         this.readers.push(cb);
->       }
->     };
->     
->     chan.prototype.write = function (value, cb) {
->       if (this.readers.length) {
->         // consumer a reader
->         var reader = this.readers.shift();
->         reader(value);
->         cb(value);
->       } else {
->         // queue the writer
->         this.writers.push([value, cb]);
->       }
->     }; 
+chan.prototype.read = function (cb) {
+  if (this.writers.length) {
+    // consume a writer
+    var writer = this.writers.shift();
+    cb(writer[0]);
+    writer[1](writer[0]);
+  } else {
+    // queue the reader
+    this.readers.push(cb);
+  }
+};
 
+chan.prototype.write = function (value, cb) {
+  if (this.readers.length) {
+    // consumer a reader
+    var reader = this.readers.shift();
+    reader(value);
+    cb(value);
+  } else {
+    // queue the writer
+    this.writers.push([value, cb]);
+  }
+}; 
+{% endhighlight %}
 
 
 I also pass the writer's value to its callback because it could be useful.
@@ -98,16 +98,17 @@ I also pass the writer's value to its callback because it could be useful.
 Mark's Go sieve begins with an integer generator.
 
 
-
->     func generate_integers() chan int {
->         ch := make(chan int);
->         go func(){
->             for i := 2; ; i++ {
->                 ch <- i;
->             }
->          }();
->         return ch;
->     } 
+{% highlight go %}
+func generate_integers() chan int {
+    ch := make(chan int);
+    go func(){
+        for i := 2; ; i++ {
+            ch <- i;
+        }
+     }();
+    return ch;
+} 
+{% endhighlight %}
 
 
 
@@ -116,17 +117,18 @@ Mark's Go sieve begins with an integer generator.
 The problem here is that the channel write (`ch <- i`) blocks inside of a loop. In JavaScript, we "block" by passing a callback that is called once the procedure can continue. Here, the _producer_ function passes itself as the callback to _write_.
 
 
-
->     function integers () {
->       var ch = new chan();
->       go(function () {
->         var producer = function (i) {
->           ch.write(i + 1, producer);
->         };
->         ch.write(2, producer);
->       });
->       return ch;
->     }; 
+{% highlight javascript %}
+function integers () {
+  var ch = new chan();
+  go(function () {
+    var producer = function (i) {
+      ch.write(i + 1, producer);
+    };
+    ch.write(2, producer);
+  });
+  return ch;
+}; 
+{% endhighlight %}
 
 
 
@@ -135,19 +137,19 @@ The problem here is that the channel write (`ch <- i`) blocks inside of a loop. 
 This Go function excludes multiples of a given prime from the given channel.
 
 
-
->     func filter_multiples(in chan int, prime int) chan int {
->        out := make(chan int);
->        go func() {
->           for {
->              if i := <- in; i % prime != 0 {
->                  out <- i;
->              }
->           }
->         }(); 
->        return out; 
->     }
->      
+{% highlight go %}
+func filter_multiples(in chan int, prime int) chan int {
+   out := make(chan int);
+   go func() {
+      for {
+         if i := <- in; i % prime != 0 {
+             out <- i;
+         }
+      }
+    }(); 
+   return out; 
+}
+{% endhighlight %}
 
 
 
@@ -156,24 +158,24 @@ This Go function excludes multiples of a given prime from the given channel.
 We can rewrite this with another recursive callback, but this time we only have to block when we do a write.
 
 
-
->     function filter_multiples (ch, prime) {
->       var out = new chan();
->       go(function () {
->           var consumer = function (i) {
->             if (i % prime != 0) {
->               out.write(i, function () {
->                 ch.read(consumer);
->               });
->             } else {
->               ch.read(consumer);
->             }
->           }
->           ch.read(consumer);
->       });
->       return out; 
->     };
->      
+{% highlight javascript %}
+function filter_multiples (ch, prime) {
+  var out = new chan();
+  go(function () {
+      var consumer = function (i) {
+        if (i % prime != 0) {
+          out.write(i, function () {
+            ch.read(consumer);
+          });
+        } else {
+          ch.read(consumer);
+        }
+      }
+      ch.read(consumer);
+  });
+  return out; 
+};
+{% endhighlight %}
 
 
 
@@ -182,19 +184,20 @@ We can rewrite this with another recursive callback, but this time we only have 
 The sieve in Go will chain a series of channels to exclude multiples of all the primes we have seen.
 
 
-
->     func sieve() chan int {
->        out := make(chan int);
->        go func() {
->           ch := generate_integers();
->           for {
->     	     prime := <- ch;
->     	     out <- prime;
->     	     ch = filter_multiples(ch, prime);
->           }	
->        }();
->        return out;
->     } 
+{% highlight go %}
+func sieve() chan int {
+   out := make(chan int);
+   go func() {
+      ch := generate_integers();
+      for {
+	     prime := <- ch;
+	     out <- prime;
+	     ch = filter_multiples(ch, prime);
+      }	
+   }();
+   return out;
+} 
+{% endhighlight %}
 
 
 
@@ -204,22 +207,24 @@ We achieve the same in JavaScript with another recursive callback.
 
 
 
->     function sieve () {
->        var out = new chan();
->        go(function () {
->           var ch = integers();
->           function iteration () {
->             ch.read(function (prime) {
->               out.write(prime, function () {
->                 ch = filter_multiples(ch, prime);
->                 iteration();
->               });
->             });
->           };
->           iteration();
->        });
->        return out;
->     }; 
+{% highlight javascript %}
+function sieve () {
+   var out = new chan();
+   go(function () {
+      var ch = integers();
+      function iteration () {
+        ch.read(function (prime) {
+          out.write(prime, function () {
+            ch = filter_multiples(ch, prime);
+            iteration();
+          });
+        });
+      };
+      iteration();
+   });
+   return out;
+}; 
+{% endhighlight %}
 
 
 
@@ -228,13 +233,14 @@ We achieve the same in JavaScript with another recursive callback.
 Mark's program simply reads from the sieve channel and prints out each prime number.
 
 
-
->     func main() {
->       primes := sieve();
->       for {
->         fmt.Println(<-primes);
->       }
->     } 
+{% highlight go %}
+func main() {
+  primes := sieve();
+  for {
+    fmt.Println(<-primes);
+  }
+} 
+{% endhighlight %}
 
 
 
@@ -244,18 +250,20 @@ Mine uses another recursive callback to do the same.
 
 
 
->     function main () {
->       var primes = sieve();
->       function iteration() {
->         primes.read(function (i) {
->           sys.puts(i);
->           iteration();
->         });
->       };
->       iteration();
->     }
->     
->     main(); 
+{% highlight javascript %}
+function main () {
+  var primes = sieve();
+  function iteration() {
+    primes.read(function (i) {
+      sys.puts(i);
+      iteration();
+    });
+  };
+  iteration();
+}
+
+main(); 
+{% endhighlight %}
 
 
 
