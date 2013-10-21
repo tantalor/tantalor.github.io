@@ -3,3 +3,4 @@ markdown: redcarpet
 pygments: true
 author: John Tantalo Tantalo
 permalink: blog/:title
+paginate: 10
