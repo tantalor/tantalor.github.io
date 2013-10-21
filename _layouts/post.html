@@ -1,7 +1,22 @@
 ---
 layout: default
 ---
-<h2>{{ page.title }}</h2>
+
+
+
+{% if page.previous.url %} 
+  <div style="float: left">
+    <a href="{{page.previous.url}}">&larr; Previous</a> 
+  </div> 
+{% endif %} 
+
+{% if page.next.url %}
+  <div style="float: right"> 
+    <a href="{{page.next.url}}">Next &rarr;</a> 
+  </div>
+{% endif %}
+
+<h2 style="clear: both; padding-top: 1em">{{ page.title }}</h2>
 <p class="meta">
   {{ page.author }}<br>
   {{ page.date | date_to_string }}
